@@ -18,8 +18,7 @@ function preload(){
   mySoundB = loadSound('E.mp3');
   mySoundC = loadSound('F.mp3');
   mySoundD = loadSound('G.mp3');
-  mySoundE = loadSound('As.mp3');
-  // mySoundF = loadSound('D7.wav');
+  mySoundE = loadSound('A.mp3');
 }
 
 function setup(){
@@ -145,9 +144,6 @@ function keyPressed(){
   } else if (key === 't'|| key === 'T'){
     mySoundE.play();
     squareColor = color(106, 235, 146);
-  } else if (key === 'y'|| key === 'Y'){
-    mySoundF.play();
-    strokeColor = color(252, 255, 153);
   }
 }
 
