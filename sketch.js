@@ -14,12 +14,12 @@ let cnv;
 let circleBoost = 1;
 
 function preload(){
-  mySoundA = loadSound('D2.wav');
-  mySoundB = loadSound('D3.wav');
-  mySoundC = loadSound('D4.wav');
-  mySoundD = loadSound('D5.wav');
-  mySoundE = loadSound('D6.wav');
-  mySoundF = loadSound('D7.wav');
+  mySoundA = loadSound('D.mp3');
+  mySoundB = loadSound('E.mp3');
+  mySoundC = loadSound('F.mp3');
+  mySoundD = loadSound('G.mp3');
+  mySoundE = loadSound('As.mp3');
+  // mySoundF = loadSound('D7.wav');
 }
 
 function setup(){
