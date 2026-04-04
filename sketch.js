@@ -58,7 +58,7 @@ squareBoost = max(squareBoost,1); // pulse decay effect, shrinks effect
 
 // ------------------------
 //Big rotating squares
-push(); 
+push(); // saves this specific drawing state
 stroke(strokeColor); // white stroke
 strokeWeight(4); 
 noFill(0);
@@ -75,7 +75,7 @@ for (let i = 0; i <20; i++) {
   pop(); 
 // ------------------------
 
- angle += 0.02; // animates rotation
+ angle += 0.02; // animates rotation over time
  angleCircle += 0.01; 
 
 // ------------------------
@@ -88,7 +88,7 @@ for (let i = 0; i <20; i++) {
   fill(circleColor);
   noStroke();
 	for(let i = 0; i < 70; i++){
-	scale(0.9);
+	scale(0.9); // gets smaller
 	rotate(angleCircle);
 	let size = 30 * circleBoost;
   ellipse(width, 0, size);
@@ -99,15 +99,15 @@ for (let i = 0; i <20; i++) {
 
 // ------------------------
 // Small Squares
-push();
+push(); // saves state seperately to others like checkpoint
 noStroke();
 fill(squareColor);
 
   for(let i = 0; i <70; i++){
   scale(0.98);
   rotate(angle);
-  let size = 50 * squareBoost;
-  square(300,0, size);
+  let size = 50 * squareBoost; // independent pulse
+  square(300,0, size); // positioned at 300,0
   }
   pop();
 // ------------------------
@@ -120,7 +120,7 @@ function canvasPressed(){
   if (!isPlaying) {
     isPlaying = true;
   } else {
-    isPlaying = false;
+    isPlaying = false; // switches between on and off animation
     
     angle = 0;
     angleCircle = 0;  //this resets animation values
