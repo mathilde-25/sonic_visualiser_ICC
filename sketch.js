@@ -50,7 +50,7 @@ background(0); // black background
   }
 
 translate(width/2, height/2);
-circleBoost *= 0.92;
+circleBoost *= 0.92; // shrinks circle boost a little each time for gradual effect
 circleBoost = max(circleBoost,1);
 
 squareBoost *= 0.92;
