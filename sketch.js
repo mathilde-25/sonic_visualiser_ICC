@@ -9,11 +9,12 @@ let strokeColor;
 let amp;
 
 let isPlaying = false;
-let cnv;
+let cnv; // function detects clicks
 
 let circleBoost = 1;
+let squareBoost = 1;  // increase shape size 
 
-function preload(){
+function preload(){ // load all my sound in before sketch starts to prevent lag
   mySoundA = loadSound('D.mp3');
   mySoundB = loadSound('E.mp3');
   mySoundC = loadSound('F.mp3');
@@ -31,7 +32,7 @@ function setup(){
   squareColor = color(100, 123, 217); 
   strokeColor = color(255, 150);
 
-  cnv.mousePressed(canvasPressed);
+  cnv.mousePressed(canvasPressed); // links mouse click 
 
   textAlign(CENTER);
   textSize(30);
@@ -40,10 +41,9 @@ function setup(){
 }
 
 function draw(){
-background(0);
+background(0); // black background 
 
   if (!isPlaying){
-    console.log('not playing');
     fill(0, 0, 255); // red coloured text
     text('play the piano', width/2, height/2);
     return; // stops code from running befoer mouse clicked
@@ -52,6 +52,9 @@ background(0);
 translate(width/2, height/2);
 circleBoost *= 0.92;
 circleBoost = max(circleBoost,1);
+
+squareBoost *= 0.92;
+squareBoost = max(squareBoost,1); // pulse decay effect, shrinks effect
 
 // ------------------------
 //Big rotating squares
@@ -101,9 +104,10 @@ noStroke();
 fill(squareColor);
 
   for(let i = 0; i <70; i++){
-  scale(0.95);
+  scale(0.98);
   rotate(angle);
-  square(300,0, 50);
+  let size = 50 * squareBoost;
+  square(300,0, size);
   }
   pop();
 // ------------------------
@@ -127,13 +131,14 @@ function canvasPressed(){
 // KEYS PRESSED
 
 function keyPressed(){
-  if (key === 'q'|| key === 'Q'){
+  if (key === 'q'|| key === 'Q'){ // if key is pressed, play selected sound and pulse
     mySoundA.play();
     circleColor = color(235, 33, 50);
     circleBoost = 2.5;
   } else if (key === 'w'|| key === 'W'){
     mySoundB.play();
     squareColor = color(235, 33, 171);
+    squareBoost = 2.5;
   } else if (key === 'e'|| key === 'E'){
     mySoundC.play();
     strokeColor = color(196, 94, 235);
@@ -144,6 +149,7 @@ function keyPressed(){
   } else if (key === 't'|| key === 'T'){
     mySoundE.play();
     squareColor = color(106, 235, 146);
+    squareBoost = 2.5;
   }
 }
 
