@@ -81,7 +81,7 @@ for (let i = 0; i <20; i++) {
 // ------------------------
 // Little circles
   push(); 
-  for (let j = 0; j <360; j += 22.5){
+  for (let j = 0; j <360; j += 22.5){ // increases angle by 22.5
   rotate(j);
 
   push();
